@@ -20,27 +20,27 @@ from app.schemas.types import EventType, MediaType
 from app.utils.string import StringUtils
 
 
-class AutoTag(_PluginBase):
+class AutoTags(_PluginBase):
     # 插件名称
-    plugin_name = "下载任务自动打标签"
+    plugin_name = "自动打标签"
     # 插件描述
     plugin_desc = "自动给下载任务分类与打站点标签、剧集名称标签"
     # 插件图标
     plugin_icon = "Youtube-dl_B.png"
     # 插件版本
-    plugin_version = "2.2"
+    plugin_version = "1.0"
     # 插件作者
     plugin_author = "innmonkey"
     # 作者主页
     author_url = "https://github.com/innmonkeyone"
     # 插件配置项ID前缀
-    plugin_config_prefix = "AutoTag_"
+    plugin_config_prefix = "AutoTags_"
     # 加载顺序
     plugin_order = 2
     # 可使用的用户级别
     auth_level = 1
     # 日志前缀
-    LOG_TAG = "[AutoTag] "
+    LOG_TAG = "[AutoTags] "
 
     # 退出事件
     _event = threading.Event()
@@ -93,7 +93,7 @@ class AutoTag(_PluginBase):
             self._onlyonce = False
             config.update({"onlyonce": self._onlyonce})
             self.update_config(config)
-            # 添加 补全下载历史的标签 任务
+            # 添加 补全历史的标签 任务
             self._scheduler.add_job(func=self._complemented_history, trigger='date',
                                     run_date=datetime.datetime.now(
                                         tz=pytz.timezone(settings.TZ)) + datetime.timedelta(seconds=3)
@@ -157,8 +157,8 @@ class AutoTag(_PluginBase):
                 if self._interval == "固定间隔":
                     if self._interval_unit == "小时":
                         return [{
-                            "id": "AutoTag",
-                            "name": "补全下载历史的标签",
+                            "id": "AutoTags",
+                            "name": "补全历史的标签",
                             "trigger": "interval",
                             "func": self._complemented_history,
                             "kwargs": {
@@ -170,8 +170,8 @@ class AutoTag(_PluginBase):
                             self._interval_time = 5
                             logger.info(f"{self.LOG_TAG}启动定时服务: 最小不少于5分钟, 防止执行间隔太短任务冲突")
                         return [{
-                            "id": "AutoTag",
-                            "name": "补全下载历史的标签",
+                            "id": "AutoTags",
+                            "name": "补全历史的标签",
                             "trigger": "interval",
                             "func": self._complemented_history,
                             "kwargs": {
@@ -180,8 +180,8 @@ class AutoTag(_PluginBase):
                         }]
                 else:
                     return [{
-                        "id": "AutoTag",
-                        "name": "补全下载历史的标签",
+                        "id": "AutoTags",
+                        "name": "补全历史的标签",
                         "trigger": CronTrigger.from_crontab(self._interval_cron),
                         "func": self._complemented_history,
                         "kwargs": {}
@@ -197,7 +197,7 @@ class AutoTag(_PluginBase):
 
     def _complemented_history(self):
         """
-        补全下载历史的标签
+        补全历史的标签
         """
         if not self.service_infos:
             return
@@ -631,7 +631,7 @@ class AutoTag(_PluginBase):
                                         'component': 'VCheckboxBtn',
                                         'props': {
                                             'model': 'onlyonce',
-                                            'label': '补全下载历史的标签(一次性任务)'
+                                            'label': '补全历史的标签(一次性任务)'
                                         }
                                     }
                                 ]

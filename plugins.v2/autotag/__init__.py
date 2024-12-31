@@ -212,11 +212,8 @@ class AutoTags(_PluginBase):
         tracker_mappings = {
             "chdbits.xyz": "ptchdbits.co",
             "agsvpt.trackers.work": "agsvpt.com",
-            "tracker.cinefiles.info": "audiences.me"
-            "tracker.icc2022.xyz": "icc2022.com"
-            "tracker1.icc2022.de": "icc2022.com"
-            "tracker2.icc2022.de": "icc2022.com"
-            "tracker3.icc2022.de": "icc2022.com",
+            "tracker.cinefiles.info": "audiences.me",
+            "tracker.icc2022.xyz": "icc2022.com",
         }
         for service in self.service_infos.values():
             downloader = service.name

@@ -1,14 +1,14 @@
 {
     "AutoTag": {
-        "name": "下载任务自动打标签",
+        "name": "自动打标签",
         "description": "自动给下载任务分类与打站点标签、剧集名称标签",
         "labels": "下载管理",
-        "version": "2.2",
+        "version": "1.0",
         "icon": "Youtube-dl_B.png",
         "author": "innmonkey",
         "level": 1,
         "history": {
-            "v2.2": "基于叮叮当版本修改，MoviePilot V2 版本下载任务分类与标签插件"
+            "v1.0": "基于叮叮当版本修改，MoviePilot V2 版本下载任务分类与标签插件"
         }
     }
 }

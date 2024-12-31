@@ -26,7 +26,7 @@ class AutoTags(_PluginBase):
     # 插件描述
     plugin_desc = "自动给下载任务分类与打站点标签、剧集名称标签"
     # 插件图标
-    plugin_icon = "Youtube-dl_B.png"
+    plugin_icon = "Vscodium_A.png"
     # 插件版本
     plugin_version = "1.0"
     # 插件作者

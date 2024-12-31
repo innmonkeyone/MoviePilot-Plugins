@@ -1,5 +1,5 @@
 {
-    "AutoTag": {
+    "AutoTags": {
         "name": "自动打标签",
         "description": "自动给下载任务分类与打站点标签、剧集名称标签",
         "labels": "下载管理",
